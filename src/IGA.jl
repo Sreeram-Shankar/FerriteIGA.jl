@@ -16,7 +16,6 @@ using WriteVTK
 using LinearAlgebra
 using StaticArrays
 import SparseArrays
-import ForwardDiff
 
 export IGAInterpolation
 export BezierExtractionOperator
@@ -115,7 +114,6 @@ include("splines/bezier_values.jl")
 include("splines/bsplines.jl")
 include("VTK.jl")
 include("iterators.jl")
-include("iterators_future.jl")
 include("apply_analytical_iga.jl")
 include("L2_projection.jl")
 
