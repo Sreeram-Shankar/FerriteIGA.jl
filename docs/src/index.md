@@ -10,17 +10,17 @@ The [Splines](@ref), [Meshes](@ref), and [Bezier extraction](@ref) pages expand 
 
 Hughes, Cottrell, and Bazilevs (2005) introduced isogeometric analysis as a Galerkin method whose basis is taken from CAD, consisting of B-splines and eventually non-uniform rational B-splines (Cottrell, Hughes, and Bazilevs, *Isogeometric Analysis* (Wiley, 2009)). A NURBS patch used for design is then available as an analysis mesh. NURBS can represent curved and conic sections such as cylinders, spheres, and circles exactly.
 
-Continuity is built into the knot vector, and the increased smoothness of IGA is a significant difference from standard finite elements. A B-spline of degree $p$ is $C^{p-m}$ at a knot of multiplicity $m$. With simple interior knots the basis is $C^{p-1}$ across element boundaries.
+Continuity is built into the knot vector, and the increased smoothness of IGA is a significant difference from standard finite elements. 
 
-In linear elasticity the stress follows from derivatives of the displacement. In a $C^0$ mesh those derivatives jump at element edges, which affects stress concentrations and bending curvature. A $C^{p-1}$ patch keeps strains and stresses continuous inside the patch. Thin shells that use second derivatives of the displacement need at least $C^1$. The [Infinite plate with hole](@ref) is a plane-stress problem with a circular hole that NURBS represent exactly.
+In linear elasticity the stress comes from derivatives of the displacement. In a standard $C^0$ mesh these derivatives jump at element edges, which affects stress concentrations and bending curvature. A higher-order smoothness patch keeps strains and stresses continuous inside the patch. Thin shells that use second derivatives of the displacement need at least continuity $C^1$. The [Infinite plate with hole](@ref) is a plane-stress problem with a circular hole that NURBS represent exactly.
 
-The same smoothness shows up in vibration spectra. After discretization the natural frequencies satisfy $(\boldsymbol{K} - \omega_n^2 \boldsymbol{M})\boldsymbol{\phi}_n = 0$. For an elastic rod of unit length the exact frequencies are $\omega_n = n\pi$. Cottrell et al. (2006) showed that a $C^{p-1}$ spline space of degree $p$ keeps the higher computed eigenfrequencies closer to this spectrum than a $C^0$ finite element space of the same degree, which drifts once the mode number exceeds about half the number of degrees of freedom. The [structural vibrations](@ref structural_vibrations) example repeats that rod calculation.
+The same smoothness provides another advantage in the eigenvalue spectrum and vibration problems. Cottrell et al. (2006) showed that the spline discretization produces an eigenvalue/frequency spectrum closer to the exact spectrum of the problem than a $C^0$ finite element space of the same degree, which drifts once the mode number exceeds about half the number of degrees of freedom. The [structural vibrations](@ref structural_vibrations) example shows the vibration spectrum of IGA.
 
 The mesh can undergo knot insertion (h-refinement), order elevation (p-refinement), or a combination of both to increase smoothness (k-refinement).
 
 ## Bézier extraction
 
-Spline functions overlap several neighbouring elements. A finite element code expects shape functions on a single cell. Bézier extraction (Borden, Scott, Evans, and Hughes, 2011) converts the B-spline or NURBS basis on each element into Bernstein polynomials. Those polynomials are local to the cell and $C^0$, so the isogeometric geometry can be used in Ferrite. The extraction data is stored on a `BezierGrid` and applied in `reinit!`.
+Spline functions overlap several neighbouring elements. A finite element code expects shape functions on a single cell. Bézier extraction (Borden, Scott, Evans, and Hughes, 2011) converts the B-spline or NURBS basis on each element into Bernstein polynomials. Those polynomials are local to the cell and $C^0$, so the isogeometric geometry can be used in Ferrite.
 
 ## Installation
 

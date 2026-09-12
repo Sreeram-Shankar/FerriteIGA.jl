@@ -11,8 +11,7 @@ Isogeometric analysis in the [Ferrite](https://github.com/Ferrite-FEM/Ferrite.jl
 
 ## Isogeometric analysis
 
-Hughes, Cottrell, and Bazilevs (2005) introduced isogeometric analysis as a Galerkin method whose basis is taken from CAD, consisting of B-splines and eventually non-uniform rational B-splines (Cottrell, Hughes, and Bazilevs, *Isogeometric Analysis* (Wiley, 2009)). A NURBS patch used for design is then available as an analysis mesh. NURBS can represent curved and conic sections such as cylinders, spheres, and circles exactly.
-Continuity is built into the knot vector, and the increased smoothness of IGA is a significant difference from standard finite elements.
+Hughes, Cottrell, and Bazilevs (2005) introduced isogeometric analysis as a Galerkin method whose basis is taken from CAD, consisting of B-splines and non-uniform rational B-splines (Cottrell, Hughes, and Bazilevs, *Isogeometric Analysis* (Wiley, 2009)). A NURBS patch from CAD design can then be used as the analysis mesh. NURBS can represent curved and conic sections such as cylinders, spheres, and circles exactly. The increased smoothness of IGA is a significant difference from traditional finite elements.
 
 Spline functions overlap several neighbouring elements. A finite element code expects shape functions on a single cell. Bézier extraction (Borden, Scott, Evans, and Hughes, 2011) converts the B-spline or NURBS basis on each element into Bernstein polynomials. Those polynomials are local to the cell so the CAD geometry can be used in Ferrite. 
 

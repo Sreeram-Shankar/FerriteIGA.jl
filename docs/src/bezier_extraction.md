@@ -1,6 +1,6 @@
 # Bezier extraction
 
-A B-spline or NURBS function of degree $p$ overlaps several neighbouring knot spans. Ferrite evaluates shape functions one cell at a time. Bézier extraction ([Borden, Scott, Evans, and Hughes, 2011](https://doi.org/10.1002/nme.2968)) writes the spline basis on an element in terms of Bernstein polynomials. Those polynomials are $C^0$ and live on one cell, so the geometry can be integrated like a standard finite element mesh. The higher smoothness between cells is kept.
+A B-spline or NURBS function of degree $p$ overlaps several neighbouring knot spans. Ferrite evaluates shape functions one cell at a time. Bézier extraction ([Borden, Scott, Evans, and Hughes, 2011](https://doi.org/10.1002/nme.2968)) writes the spline basis on an element in terms of Bernstein polynomials. Those polynomials are $C^0$ and are local one cell, so the geometry can be integrated like a standard finite element mesh. The higher smoothness between cells is kept geometrically.
 
 The extraction operator $\boldsymbol{C}^e$ is built from the knot vector once per cell. `BezierGrid` stores it. `IGAInterpolation` is the Bernstein basis. `BezierCellValues` applies $\boldsymbol{C}^e$ in `reinit!`.
 
@@ -43,7 +43,7 @@ The geometry can then be written in either basis,
 \boldsymbol{S}(\xi) = \sum_A R_A(\xi)\, \boldsymbol{X}_A = \sum_A B_A(\xi)\, \boldsymbol{X}_{b,A}.
 ```
 
-Bernstein values are tabulated at quadrature points, as in Ferrite. Multiplication by $\boldsymbol{C}^e$ and the weights gives the NURBS values used in the weak form.
+Bernstein values are stored at quadrature points, as in Ferrite. Multiplication by $\boldsymbol{C}^e$ and the weights gives the NURBS values used in the weak form.
 
 ## Usage
 

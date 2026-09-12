@@ -1,6 +1,6 @@
 # Splines
 
-Isogeometric analysis uses B-splines and NURBS as the discrete basis. A one-dimensional spline is built from a knot vector and a polynomial degree. Surfaces and solids are products of these one-dimensional functions. Control points set the shape. NURBS add a positive weight at each control point, which is what allows exact circles and other conic sections.
+Isogeometric analysis uses B-splines and NURBS as the discrete approximation basis. A one-dimensional spline is built from a knot vector and a polynomial degree. Surfaces and solids are products of these one-dimensional functions. Control points set the shape. NURBS add a positive weight at each control point, which is what allows exact circles and other conic sections.
 
 The patch type is a `NURBSMesh`. After Bézier extraction, see [Bezier extraction](@ref), assembly follows the [Ferrite documentation](https://ferrite-fem.github.io/Ferrite.jl/stable/).
 
@@ -40,6 +40,7 @@ N_A(\xi, \eta) = \hat{N}_{i}^{(\xi)}(\xi) \, \hat{N}_{j}^{(\eta)}(\eta).
 ```
 
 The factors $\hat{N}_{i}^{(\xi)}$ and $\hat{N}_{j}^{(\eta)}$ use knot vectors $\Xi^{(\xi)}$ and $\Xi^{(\eta)}$ and degrees $p_\xi$, $p_\eta$.
+
 ### Open knot vectors
 
 A knot vector is open for degree $p$ when the first and last values each have multiplicity $p+1$,
@@ -66,7 +67,7 @@ and the rational basis is
 R_{A,p}(\xi) = \frac{w_A \, \hat{N}_{A,p}(\xi)}{W(\xi)}.
 ```
 
-These functions still sum to one, $\sum_A R_{A,p}(\xi) = 1$. If all weights are equal, $R_{A,p} = \hat{N}_{A,p}$.
+These functions sum to one, $\sum_A R_{A,p}(\xi) = 1$. If all weights are equal, $R_{A,p} = \hat{N}_{A,p}$.
 
 A NURBS surface uses the same product of one-dimensional bases, with $R_A$ in place of $N_A$. With weights $w_{ij}$ on the control points,
 

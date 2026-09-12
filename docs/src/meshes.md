@@ -41,7 +41,7 @@ generate_grid(BezierCell{RefHexahedron, 2}, (4, 4, 4), Vec(-1.0, -1.0, -1.0), Ve
 
 `:doubly_curved_nurbs` is a quadratic NURBS surface (`r1`, `r2`, `α2`). The degree is fixed.
 
-### Exact circles
+### Circles and cylinders
 
 `:plate_with_hole` is a quarter plate with a circular hole of radius 1, outer size 4. The degree is 2. The first entry of `nels` must be even and at least 2.
 
